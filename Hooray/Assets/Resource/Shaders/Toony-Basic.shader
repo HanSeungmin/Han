@@ -10,8 +10,9 @@ Shader "Toon/Basic" {
 		Tags { "RenderType"="Opaque" }
 		Pass {
 			Name "BASE"
-			Cull Off
-			
+			Cull Back						//
+			//Blend SrcAlpha OneMinusSrcAlpha	//
+
 			CGPROGRAM
 			#pragma vertex vert
 			#pragma fragment frag
@@ -59,7 +60,7 @@ Shader "Toon/Basic" {
 		Tags { "RenderType"="Opaque" }
 		Pass {
 			Name "BASE"
-			Cull Off
+			Cull Back
 			SetTexture [_MainTex] {
 				constantColor [_Color]
 				Combine texture * constant

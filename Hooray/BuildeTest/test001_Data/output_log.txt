@@ -14,6 +14,10 @@ Platform assembly: D:\GitHub\Han\Hooray\BuildeTest\test001_Data\Managed\UnityEng
 Loading D:\GitHub\Han\Hooray\BuildeTest\test001_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
 Platform assembly: D:\GitHub\Han\Hooray\BuildeTest\test001_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
 Loading D:\GitHub\Han\Hooray\BuildeTest\test001_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: D:\GitHub\Han\Hooray\BuildeTest\test001_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading D:\GitHub\Han\Hooray\BuildeTest\test001_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: D:\GitHub\Han\Hooray\BuildeTest\test001_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading D:\GitHub\Han\Hooray\BuildeTest\test001_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
 Platform assembly: D:\GitHub\Han\Hooray\BuildeTest\test001_Data\Managed\System.Core.dll (this message is harmless)
 - Completed reload, in  0.045 seconds
 desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
@@ -24,4 +28,4 @@ Platform assembly: D:\GitHub\Han\Hooray\BuildeTest\test001_Data\Managed\System.d
 WARNING: Shader Unsupported: 'Toon/Basic Outline' - Pass 'OUTLINE' has no vertex shader
 WARNING: Shader Unsupported: 'Toon/Basic Outline' - All passes removed
 Setting up 1 worker threads for Enlighten.
-  Thread -> id: 14c4 -> priority: 1 
+  Thread -> id: 19bc -> priority: 1 
