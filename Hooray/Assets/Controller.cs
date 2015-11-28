@@ -8,6 +8,8 @@ public class Controller : MonoBehaviour {
     public GameObject Control_Area;         // Control_Area
     public GameObject Course;                // 움직일 오브젝트
 
+    public GameObject debugOBJ;
+
     public float speed;                     // 움직일 오브젝트의 속도.
     public float Rotspeed;                     // 움직일 오브젝트의 속도.
     public float Angle;                     // 처음 터치된 위치를 기준으로 움드래그로 이동되는 포인트와의 각도
@@ -30,6 +32,9 @@ public class Controller : MonoBehaviour {
     {
         cameraPos = Camera.transform.position - Player_OBJ.transform.position;
         ani = Player_OBJ.GetComponent<Animator>();
+        PNT_A.transform.position = Control_Area.GetComponent<RectTransform>().position ;
+        PNT_B.transform.position = Control_Area.transform.position;
+
     }
 
     // Update is called once per frame
@@ -40,8 +45,6 @@ public class Controller : MonoBehaviour {
 #if UNITY_EDITOR || UNITY_STANDALONE_WIN
         if (Input.GetMouseButtonDown(0))
         {
-            PNT_A.transform.position = Control_Area.transform.position;
-
             isTouch = true;
         }
 
@@ -63,39 +66,45 @@ public class Controller : MonoBehaviour {
 #endif
         if (isTouch)                                           
         {
-#if UNITY_EDITOR || UNITY_STANDALONE_WIN
-            PNT_B.transform.position = Input.mousePosition;
-#elif UNITY_ANDROID
-            PNT_B.transform.position = Input.GetTouch(0).position;
-#endif
-            PNT_A.SetActive(true);                             
+            PNT_A.SetActive(true);
             PNT_B.SetActive(true);
+#if UNITY_EDITOR || UNITY_STANDALONE_WIN
+            PNT_B.transform.position = Vector3.ClampMagnitude(Input.mousePosition - PNT_A.transform.position, 95.0f)+PNT_A.transform.position;
 
-            if (distance() >= 100)
+#elif UNITY_ANDROID
+            PNT_B.transform.position = Vector3.ClampMagnitude(Input.GetTouch(0).position - PNT_A.transform.position, 95.0f)+PNT_A.transform.position;
+#endif
+            if (distance() >= 95)
             {
                 speed = 100.0f * 0.5f;
             }
-            if (distance() < 100)
+            if (distance() < 95)
             {
                 speed = distance() * 0.5f;
             }
             ani.SetFloat("Length", speed / 30);
+
             if (PNT_B.transform.position != PNT_A.transform.position) 
             {
                 trigonometric_function();                           
             }
+
             move();
+
             Vector3 temp = Player_OBJ.transform.position;
             temp.y += 0.2f;
             Course.transform.position = temp;
             Course.transform.eulerAngles = new Vector3(270, Angle, 0);
-
+            //PNT_A.transform.eulerAngles = new Vector3(0, 0, -Angle + 180);
         }
+
+
 
         if (!isTouch)
         {
             PNT_A.SetActive(false);                             
             PNT_B.SetActive(false);
+            PNT_B.transform.position = Control_Area.transform.position;
 #if UNITY_EDITOR || UNITY_STANDALONE_WIN
             ani.SetFloat("Length", (ani.GetFloat("Length") - 0.03f));
 #elif UNITY_ANDROID
@@ -139,6 +148,12 @@ public class Controller : MonoBehaviour {
         }
     }
 
+
+
+
+
+
+
     void move()
     {
         Vector3 Obj_Forward = Player_OBJ.transform.forward;
@@ -150,7 +165,11 @@ public class Controller : MonoBehaviour {
 
     float distance()
     {
-        float distance = Mathf.Sqrt((PNT_A.transform.position.x - PNT_B.transform.position.x) * (PNT_A.transform.position.x - PNT_B.transform.position.x) + (PNT_A.transform.position.y - PNT_B.transform.position.y) * (PNT_A.transform.position.y - PNT_B.transform.position.y));
+#if UNITY_EDITOR || UNITY_STANDALONE_WIN
+        float distance = Mathf.Sqrt((PNT_A.transform.position.x - Input.mousePosition.x) * (PNT_A.transform.position.x - Input.mousePosition.x) + (PNT_A.transform.position.y - Input.mousePosition.y) * (PNT_A.transform.position.y - Input.mousePosition.y));
+#elif UNITY_ANDROID 
+        float distance = Mathf.Sqrt((PNT_A.transform.position.x - Input.GetTouch(0).position.x) * (PNT_A.transform.position.x - Input.GetTouch(0).position.x) + (PNT_A.transform.position.y - Input.GetTouch(0).position.y) * (PNT_A.transform.position.y - Input.GetTouch(0).position.y));
+#endif
         return distance;
     }
 }
