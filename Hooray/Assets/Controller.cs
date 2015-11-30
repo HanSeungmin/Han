@@ -5,10 +5,8 @@ public class Controller : MonoBehaviour {
 
     public GameObject Player_OBJ;          // 움직일 오브젝트
     public GameObject Camera;               // 카메라가 오브젝트를 하나의 각도로 따라다님(TPS는 아님)
-    public GameObject Control_Area;         // Control_Area
-    public GameObject Course;                // 움직일 오브젝트
 
-    public GameObject debugOBJ;
+
 
     public float speed;                     // 움직일 오브젝트의 속도.
     public float Rotspeed;                     // 움직일 오브젝트의 속도.
@@ -17,7 +15,7 @@ public class Controller : MonoBehaviour {
     public Animator ani;
 
     // 터치 포인트를 가시적으로 표현하기 위해 Unity의 메뉴중 GameObject > UI > Image를 2개 사용하였다.
-    public GameObject PNT_A;                // 처음 터치시 포인터 이미지.
+    public GameObject PNT_A;                // 처음 터치시 위치..
     public GameObject PNT_B;                // 터치후 드래그로 이동되는 포인터 이미지.
 
     public Vector2 pickA;                   // 처음 터치시 포인트의 위치.
@@ -32,9 +30,6 @@ public class Controller : MonoBehaviour {
     {
         cameraPos = Camera.transform.position - Player_OBJ.transform.position;
         ani = Player_OBJ.GetComponent<Animator>();
-        PNT_A.transform.position = Control_Area.GetComponent<RectTransform>().position ;
-        PNT_B.transform.position = Control_Area.transform.position;
-
     }
 
     // Update is called once per frame
@@ -43,9 +38,10 @@ public class Controller : MonoBehaviour {
     void Update()
     {
 #if UNITY_EDITOR || UNITY_STANDALONE_WIN
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && Screen.width / 2 > Input.mousePosition.x && Screen.height / 2 > Input.mousePosition.y)
         {
             isTouch = true;
+            PNT_A.transform.position = Input.mousePosition;
         }
 
         if (Input.GetMouseButtonUp(0))
@@ -53,10 +49,10 @@ public class Controller : MonoBehaviour {
             isTouch = false;
         }
 #elif UNITY_ANDROID
-        if (Input.GetTouch(0).phase == TouchPhase.Began)
+        if (Input.GetTouch(0).phase == TouchPhase.Began && Screen.width / 2 > Input.GetTouch(0).position.x  && Screen.height / 2 > Input.GetTouch(0).position.y)
         {
-            PNT_A.transform.position = Control_Area.transform.position;
             isTouch = true;
+            PNT_A.transform.position = Input.GetTouch(0).position;
         }
 
         if (Input.GetTouch(0).phase == TouchPhase.Ended)
@@ -93,9 +89,6 @@ public class Controller : MonoBehaviour {
 
             Vector3 temp = Player_OBJ.transform.position;
             temp.y += 0.2f;
-            Course.transform.position = temp;
-            Course.transform.eulerAngles = new Vector3(270, Angle, 0);
-            //PNT_A.transform.eulerAngles = new Vector3(0, 0, -Angle + 180);
         }
 
 
@@ -104,7 +97,6 @@ public class Controller : MonoBehaviour {
         {
             PNT_A.SetActive(false);                             
             PNT_B.SetActive(false);
-            PNT_B.transform.position = Control_Area.transform.position;
 #if UNITY_EDITOR || UNITY_STANDALONE_WIN
             ani.SetFloat("Length", (ani.GetFloat("Length") - 0.03f));
 #elif UNITY_ANDROID
