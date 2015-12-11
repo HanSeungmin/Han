@@ -1,0 +1,62 @@
+===================================================================================
+web server, game server 		// 실제 게임이 구동되는 서버.
+DB server				// 게임에 필요한 유저 정보를 저장하는 서버. ID, STATE, ITEM, ECT......
+===================================================================================
+
+
+
+create databadse server_name;		// 게임서버 생성
+
+show databases;				// 현재 존재하는 서버들(데이터 베이스들) 목록을 보여줌;
+
+use server_name;			// 게임서버로 진입
+
+show tables;				// 현재 진입한 서버의 테이블의 목록을 확인.
+
+create table table_name(		// 테이블을 생성.
+	-> fild_id1 varchar(50),	// 테이블에 존재할 필드1를 생성, 해당 필드에는 문자열 50바이트??
+	-> fild_id2 vacchar(50));	// 테이블에 존재할 필드2를 생성, 해당 필드에는 문자열 50바이트??
+
+create table tmp_table(			// tmp_table라는 테이블을 생성.
+	-> user varchar(50));
+
+drop table tmp_table;			// tmp_table을 삭제?
+
+desc table_name;			// table_name의 테이블에 있는 필드정보를 출력.
+
+alter table table_name drop fild_name	// alter table은 테이블을 수정하겠다라는 것이며.
+					// 수정 내용은 fild_name을 드롭(삭제)하겠다.
+
+For information about MySQL products and services, visit:
+   http://www.mysql.com/
+For developer information, including the MySQL Reference Manual, visit:
+   http://dev.mysql.com/
+To buy MySQL Enterprise support, training, or other products, visit:
+   https://shop.mysql.com/
+
+List of all MySQL commands:
+Note that all text commands must be first on line and end with ';'
+?         (\?) Synonym for `help'.
+clear     (\c) Clear the current input statement.
+connect   (\r) Reconnect to the server. Optional arguments are db and host.
+delimiter (\d) Set statement delimiter.
+ego       (\G) Send command to mysql server, display result vertically.
+exit      (\q) Exit mysql. Same as quit.
+go        (\g) Send command to mysql server.
+help      (\h) Display this help.
+notee     (\t) Don't write into outfile.
+print     (\p) Print current command.
+prompt    (\R) Change your mysql prompt.
+quit      (\q) Quit mysql.
+rehash    (\#) Rebuild completion hash.
+source    (\.) Execute an SQL script file. Takes a file name as an argument.
+status    (\s) Get status information from the server.
+tee       (\T) Set outfile [to_outfile]. Append everything into given outfile.
+use       (\u) Use another database. Takes database name as argument.
+charset   (\C) Switch to another charset. Might be needed for processing binlog with multi-byte charsets.
+warnings  (\W) Show warnings after every statement.
+nowarning (\w) Don't show warnings after every statement.
+
+For server side help, type 'help contents'
+
+mysql>

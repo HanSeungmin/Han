@@ -1,0 +1,12 @@
+c:\users\a.k\documents\visual studio 2015\Projects\gameserver\gameserver\bin\Debug\gameserver.exe.config
+c:\users\a.k\documents\visual studio 2015\Projects\gameserver\gameserver\bin\Debug\gameserver.exe
+c:\users\a.k\documents\visual studio 2015\Projects\gameserver\gameserver\bin\Debug\gameserver.pdb
+c:\users\a.k\documents\visual studio 2015\Projects\gameserver\gameserver\obj\Debug\gameserver.csprojResolveAssemblyReference.cache
+c:\users\a.k\documents\visual studio 2015\Projects\gameserver\gameserver\obj\Debug\gameserver.exe
+c:\users\a.k\documents\visual studio 2015\Projects\gameserver\gameserver\obj\Debug\gameserver.pdb
+F:\Learn\NetWork\Server\gameserver\gameserver\bin\Debug\gameserver.exe.config
+F:\Learn\NetWork\Server\gameserver\gameserver\obj\Debug\gameserver.exe
+F:\Learn\NetWork\Server\gameserver\gameserver\obj\Debug\gameserver.pdb
+F:\Learn\NetWork\Server\gameserver\gameserver\bin\Debug\gameserver.exe
+F:\Learn\NetWork\Server\gameserver\gameserver\bin\Debug\gameserver.pdb
+F:\Learn\NetWork\Server\gameserver\gameserver\obj\Debug\gameserver.csprojResolveAssemblyReference.cache
