@@ -68,8 +68,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Ball_State.cs" />
-    <Compile Include="Assets\Control.cs" />
+    <Compile Include="Assets\CodeResource\Ball_State.cs" />
+    <Compile Include="Assets\CodeResource\Control.cs" />
+    <Compile Include="Assets\CodeResource\DrawAIM.cs" />
+    <Compile Include="Assets\CodeResource\IgnoreCollision.cs" />
+    <Compile Include="Assets\CodeResource\OBJBall.cs" />
+    <Compile Include="Assets\CodeResource\fCollide.cs" />
+    <Compile Include="Assets\CodeResource\maingame.cs" />
     <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\Game\EquipItems.cs" />
     <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\Game\EquipRandomItem.cs" />
     <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\Game\UICursor.cs" />
@@ -205,8 +210,6 @@
     <Compile Include="Assets\NGUI\Scripts\UI\UITexture.cs" />
     <Compile Include="Assets\NGUI\Scripts\UI\UITooltip.cs" />
     <Compile Include="Assets\NGUI\Scripts\UI\UIViewport.cs" />
-    <Compile Include="Assets\OBJBall.cs" />
-    <Compile Include="Assets\maingame.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\NGUI\Examples\Atlases\Fantasy\Fantasy Font - Normal.txt" />

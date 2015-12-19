@@ -6,6 +6,7 @@ public class OBJBall : MonoBehaviour {
     public static Vector3 stt_fstBallsLendingPos;
     public GameObject Orignal_Object;
 
+
     public static List<GameObject> Referance_Object;
 
     // Use this for initialization
