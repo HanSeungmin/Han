@@ -73,6 +73,7 @@
     <Compile Include="Assets\CodeResource\DrawAIM.cs" />
     <Compile Include="Assets\CodeResource\IgnoreCollision.cs" />
     <Compile Include="Assets\CodeResource\OBJBall.cs" />
+    <Compile Include="Assets\CodeResource\Prefebs.cs" />
     <Compile Include="Assets\CodeResource\fCollide.cs" />
     <Compile Include="Assets\CodeResource\maingame.cs" />
     <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\Game\EquipItems.cs" />

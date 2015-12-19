@@ -4,6 +4,7 @@ using System.Collections.Generic;
 public class OBJBall : MonoBehaviour {
 
     public static Vector3 stt_fstBallsLendingPos;
+    public static float ShootAngle;
     public GameObject Orignal_Object;
 
 

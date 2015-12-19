@@ -4,12 +4,13 @@ using Assets.CodeResource;
 
 public class Ball_State : MonoBehaviour {
 
-    public static float Angle = 0.0f;
+    private bool isShoot = false;
+    private float Angle = 0.0f;
     public float fAngle = 0.0f;
     public static Vector3 lendingPos;
     public int BounceCNT = 0;
-    float spinLevel = 0.0f;
     public bool isMove = false;
+    
 
 
 
@@ -20,32 +21,36 @@ public class Ball_State : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (isMove)
-        {
-            this.gameObject.transform.eulerAngles = new Vector3(0, Angle, 0); ;
 
-            Vector3 thisPOS = this.gameObject.transform.position;
-            Vector3 Dirction = this.gameObject.transform.forward;
-            Vector3 newPOS = thisPOS + Dirction * maingame.GameSpeed * Time.deltaTime;
-            this.gameObject.transform.position = newPOS;
-            fAngle = Angle;
-
-            if (maingame.BestBounce < BounceCNT)
-            {
-                maingame.BestBounce = BounceCNT;
-            }
-        }
-        else
-        {
-            BounceCNT = 0;
-        }
-
+        // 추후 볼에 대한 업데이트 부분은 델리게이트로 처리한다.
         if (Control.isShoot)
         {
-            Vector3 newspin = new Vector3(0, spinLevel, 0);
-            spinLevel += 0.1f;
-            newspin.y = spinLevel;
-            this.gameObject.transform.Rotate(newspin);
+            if (isMove)
+            {
+                if (!isShoot)
+                {
+                    Angle = OBJBall.ShootAngle;
+                    isShoot = true;
+                }
+
+                this.gameObject.transform.eulerAngles = new Vector3(0, Angle, 0); ;
+      
+                Vector3 thisPOS = this.gameObject.transform.position;
+                Vector3 Dirction = this.gameObject.transform.forward;
+                Vector3 newPOS = thisPOS + Dirction * maingame.GameSpeed * Time.deltaTime;
+                this.gameObject.transform.position = newPOS;
+                fAngle = Angle;
+
+                if (maingame.BestBounce < BounceCNT)
+                {
+                    maingame.BestBounce = BounceCNT;
+                }
+            }
+            else
+            {
+                BounceCNT = 0;
+                isShoot = false;
+            }
         }
     }
 
@@ -65,16 +70,20 @@ public class Ball_State : MonoBehaviour {
 
         else if (col.gameObject.layer == LayerMask.NameToLayer("Wall"))
         {
-            Debug.Log("bingo");
-            BounceCNT++;
-            Angle -= 180 ;
-            if (Angle > 360)
+            if (Control.isShoot)
             {
-                Angle -= 360;
-            }
-            if (Angle < 0)
-            {
-                Angle += 360;
+                Instantiate(Prefebs.stt_PlayerBall);
+                Control.stt_ballCNT++;
+                BounceCNT++;
+                Angle -= 180;
+                if (Angle > 360)
+                {
+                    Angle -= 360;
+                }
+                if (Angle < 0)
+                {
+                    Angle += 360;
+                }
             }
         }
     }
